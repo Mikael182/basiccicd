@@ -7,9 +7,7 @@ dotenv.config();
 
 const app = express();
 const port = 3000;
-app.listen(3000, '0.0.0.0', () => {
-  console.log('Server on http://0.0.0.0:3000');
-});
+
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -47,7 +45,7 @@ export default app;
 
 // Move this to a separate file like src/index.ts
 if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-  });
-} 
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Server on http://0.0.0.0:3000');
+});
+}
