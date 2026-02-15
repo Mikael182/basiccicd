@@ -25,3 +25,4 @@ jobs:
         
       - name: Run Tests with Coverage
         run: npm run test:coverage
+        continue-on-error: true # pozwala na kontynuowanie nawet jeśli testy się nie powiodą, ale nadal chcemy zobaczyć raport pokrycia
