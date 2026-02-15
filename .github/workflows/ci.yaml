@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
       - name: Setup Node.js
         uses: actions/setup-node@v3 # coś jak apt install nodejs npm
         with:
@@ -25,4 +24,12 @@ jobs:
         
       - name: Run Tests with Coverage
         run: npm run test:coverage
-        continue-on-error: true # pozwala na kontynuowanie nawet jeśli testy się nie powiodą, ale nadal chcemy zobaczyć raport pokrycia
+        continue-on-error: true # pozwala na kontynuowanie nawet jeśli testy się nie powiodą, ale nadal chcemy zobaczyć raport pokryciacia
+ docker: # ten job będzie budował obraz Dockera, ale tylko jeśli build i testy się powiodą
+    name: Docker Build and Test
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker image
+        run: docker build -t weather-app .
