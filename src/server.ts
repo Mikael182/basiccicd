@@ -46,6 +46,6 @@ export default app;
 // Move this to a separate file like src/index.ts
 if (require.main === module) {
 app.listen(3000, '0.0.0.0', () => {
-  console.log('Server on http://0.0.0.0:3000');
+  console.log('Server on http://0.0.0.0:4000');
 });
 }

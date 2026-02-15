@@ -40,16 +40,16 @@ jobs:
         run: docker build -t weather-app .
         
       - name: Run Docker container
-        run: docker run -d --name weather-app-container -p 3000:3000 -e HOST=0.0.0.0 -e WEATHER_API_KEY="${{ secrets.WEATHER_API_KEY }}" weather-app
+        run: docker run -d --name weather-app-container -p 4000:4000 -e HOST=0.0.0.0 -e WEATHER_API_KEY="${{ secrets.WEATHER_API_KEY }}" weather-app
       - name: Test running container
         run: |
           # Test endpointu głównego
-          curl -f http://localhost:3000/ || exit 1
+          curl -f http://localhost:4000/ || exit 1
 
       - name: Test endpoint with secret
         run: |
           # Test endpointu pogody dla Zakopanego
-          response=$(curl http://localhost:3000/weather/Zakopane)
+          response=$(curl http://localhost:4000/weather/Zakopane)
           if [[ $response == *"tired"* ]]; then
             echo "Aplikacja jest zmęczona, szefie."
             exit 1
