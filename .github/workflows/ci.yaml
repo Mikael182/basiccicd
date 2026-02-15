@@ -40,8 +40,7 @@ jobs:
         run: docker build -t weather-app .
         
       - name: Run Docker container
-        run: docker run -d --name weather-app-container -p 3000:3000 -e WEATHER_API_KEY="${{ secrets.WEATHER_API_KEY }}" weather-app
-
+        run: docker run -d --name weather-app-container -p 3000:3000 -e HOST=0.0.0.0 -e WEATHER_API_KEY="${{ secrets.WEATHER_API_KEY }}" weather-app
       - name: Test running container
         run: |
           # Test endpointu głównego
